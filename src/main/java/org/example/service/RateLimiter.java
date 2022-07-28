@@ -22,13 +22,19 @@ public class RateLimiter {
             while (true) {
                 try {
                     Thread.sleep(1000);
-                    sem.release(PERMITS_PER_SECOND);
+                    if (sem.availablePermits()==0) {
+                        sem.release(PERMITS_PER_SECOND);
+                    }
+                    else {
+                        sem.release(PERMITS_PER_SECOND - sem.availablePermits());
+                    }
+
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             }
         });
-
+        // STARTING THREAD IN THE CONSTRUCTOR
         permitReleaseThread.start();
 
     }
@@ -55,7 +61,7 @@ public class RateLimiter {
     public void acquire() {
         // TODO
         try {
-            sem.acquire(1);
+            sem.acquire();
         }
         catch (Exception e) {
             e.printStackTrace();
