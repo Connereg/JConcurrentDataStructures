@@ -14,8 +14,8 @@ public class Main {
      *      synchronized, Semaphore, ReentrantLock.... ConcurrentHashMap
      */
     public static void main(String[] args) throws InterruptedException {
-        System.out.println("Hello world!");
-        // PART 1
+//        System.out.println("Hello world!");
+        // P
 //        Thread t1 = new Thread(() -> {
 //            Dictionary d1 = Dictionary.getInstance();
 //            System.out.println(d1);
@@ -26,8 +26,8 @@ public class Main {
 //        });
 //        t1.start();
 //        t2.start();
-        // Are we going to get the same Dictionary instance?
-        // Is it not going to be a Singleton?
+//         Are we going to get the same Dictionary instance?
+//         Is it not going to be a Singleton?
 
 
         // PART 2
